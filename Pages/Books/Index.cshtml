@@ -1,4 +1,49 @@
 ﻿@page
 @model BooksRazorApp.Pages.Books.IndexModel
 @{
+    ViewData["Title"] = "Books";
 }
+
+<br />
+<div class="container row m-0 p-0">
+    <div class="col-md-9">
+        <h2 class="text-secondary">Book List</h2>
+    </div>
+    <div class="col-md-3">
+        <a class="btn btn-primary text-white form-control" href="#">Add new book</a>
+    </div>
+
+    <div class="col-md-12 mt-3">
+        <table class="table table-striped">
+            <thead>
+                <tr class="text-center">
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Author</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    var count = 0;
+                    foreach (var item in Model.Book)
+                    {
+                        <tr class="text-center">
+                            <td>@(++count)</td>
+                            <td>@item.Name</td>
+                            <td>@item.Author</td>
+                            <td>
+                                <a href="#" class="btn btn-secondary">Edit</a>
+                                <a href="#" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-12 text-center">
+        <a href="#">Back to Home</a>
+    </div>
+</div>
