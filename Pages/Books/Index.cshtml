@@ -14,6 +14,7 @@
     </div>
 
     <div class="col-md-12 mt-3">
+        <form method="post">
         <table class="table table-striped d-sm-table">
             <thead>
                 <tr class="text-center">
@@ -35,7 +36,7 @@
                                 <td>@item.ISBN</td>
                                 <td>
                                     <a asp-page="Edit" asp-route-id="@item.ID" class="btn btn-secondary btn-sm">Edit</a>
-                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                    <button asp-page-handler="Delete" asp-route-id="@item.ID" onclick="return confirm('Are you sure?')" class="btn btn-danger btn-sm">Delete</button>
                                 </td>
                             </tr>
                         }
@@ -49,6 +50,7 @@
                 }
             </tbody>
         </table>
+        </form>
     </div>
 
     <div class="col-md-12 text-center">
