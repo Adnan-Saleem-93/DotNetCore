@@ -25,16 +25,25 @@
             </thead>
             <tbody>
                 @{
-                    foreach (var item in Model.Book)
+                    if (Model.Book.Count() > 0)
+                    {
+                        foreach (var item in Model.Book)
+                        {
+                            <tr class="text-center">
+                                <td>@item.Name</td>
+                                <td>@item.Author</td>
+                                <td>@item.ISBN</td>
+                                <td>
+                                    <a asp-page="Edit" asp-route-id="@item.ID" class="btn btn-secondary btn-sm">Edit</a>
+                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
                     {
                         <tr class="text-center">
-                            <td>@item.Name</td>
-                            <td>@item.Author</td>
-                            <td>@item.ISBN</td>
-                            <td>
-                                <a asp-page="Edit" class="btn btn-secondary btn-sm">Edit</a>
-                                <button class="btn btn-danger btn-sm">Delete</button>
-                            </td>
+                            <td colspan="4"><h3 class="text-center">No Results Found</h3></td>
                         </tr>
                     }
                 }
